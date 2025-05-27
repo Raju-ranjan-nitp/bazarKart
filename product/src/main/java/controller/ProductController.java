@@ -16,10 +16,16 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+
     @PostMapping("/add")
     public ResponseEntity addProduct(@RequestBody ProductRequestDTO prd) {
-     productService.addProduct(prd);
+        productService.addProduct(prd);
 
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
+
+    public String get() {
+        return "hello";
+    }
+
 }
