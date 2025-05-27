@@ -3,10 +3,7 @@ package controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import requestDTO.ProductRequestDTO;
 import service.ProductService;
 
@@ -24,8 +21,10 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
 
-    public String get() {
-        return "hello";
+    @GetMapping("/getProduct/{id}")
+    public ResponseEntity getProductById( @PathVariable(name="id") int id) {
+        productService.getProductById(id);
+        return new ResponseEntity<>(HttpStatus.found);
     }
 
 }
